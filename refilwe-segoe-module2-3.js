@@ -31,3 +31,27 @@ let undefinedValue = undefined;
 
 // 10 A template literal that uses at least two of the above variables
 let message = `Good day, my name is ${fullName} and I am ${age} years old. My favourite temperature is ${favouriteTemperature}°C.`;
+
+// Part B: Using typeof to Check the Data Types of Your Variables with output predictions before execution
+
+//Prediction:
+//console.log(typeof fullName); -> string
+//console.log(typeof age); -> number
+//console.log(typeof enjoyingJavaScript); -> boolean
+//console.log(typeof favouriteTemperature); // number
+//console.log(typeof notANumber); // number
+//console.log(typeof infinity); // number
+//console.log(typeof maxSafeInteger); // number
+//console.log(typeof nullValue); // object
+//console.log(typeof undefinedValue); // undefined
+
+console.log(typeof fullName); // string
+console.log(typeof age); // number
+console.log(typeof enjoyingJavaScript); // boolean
+console.log(typeof favouriteTemperature); // number
+console.log(typeof notANumber); // number
+console.log(typeof infinity); // number
+console.log(typeof maxSafeInteger); // number
+console.log(typeof nullValue); // object
+console.log(typeof undefinedValue); // undefined
+
