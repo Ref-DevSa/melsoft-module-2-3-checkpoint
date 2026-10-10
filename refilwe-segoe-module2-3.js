@@ -45,13 +45,13 @@ let message = `Good day, my name is ${fullName} and I am ${age} years old. My fa
 //console.log(typeof nullValue); // object
 //console.log(typeof undefinedValue); // undefined
 
-console.log(typeof fullName); // string
-console.log(typeof age); // number
-console.log(typeof enjoyingJavaScript); // boolean
-console.log(typeof favouriteTemperature); // number
-console.log(typeof notANumber); // number
-console.log(typeof infinity); // number
-console.log(typeof maxSafeInteger); // number
-console.log(typeof nullValue); // object
-console.log(typeof undefinedValue); // undefined
+console.log(typeof null); // string
+console.log(typeof NaN); // number
+console.log(typeof undefined); // boolean
+console.log(typeof "42"); // number
+console.log(typeof (typeof 42)); // number
+console.log(typeof [1, 2, 3]); // number
+console.log(typeof function() {}); // number
 
+// Why does typeof null return 'object' and typeof NaN return 'number'? 
+// Give the historical reason for one and the technical reason for the other.
