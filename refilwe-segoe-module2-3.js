@@ -328,3 +328,118 @@ console.log(typeof ([1] + [2])); // string
 //    Number('') returns 0 because an empty string is converted to zero when parsed as a number.
 //    This can cause issues in form validation or data processing where an empty field should be treated as invalid or missing data.
 
+// Challenge 3 — Operators Masterclass
+
+// Arithmetic Operator
+// 1. Arithmetic (include modulo): Calculate a worker's monthly net salary from a gross salary of R 45,000 
+// after 25% tax, 1% UIF, and R 2,500 medical aid. Practical example is your salary advice that you get at work.
+let grossSalary = 45000;
+let tax = grossSalary * 0.25;
+let uif = grossSalary * 0.01;
+let medicalAid = 2500;
+let netSalary = grossSalary - tax - uif - medicalAid;
+console.log(netSalary); // 31250
+
+// 2. Assignment operator
+// Assignment (at least 3 compound operators): A shopping cart starts at 0. Three items added
+// at R 150, R 85, R 220. Then 10% discount, then 15% VAT.
+let shoppingCart = 0;
+shoppingCart += 150; // Add first item
+shoppingCart += 85; // Add second item
+shoppingCart += 220; // Add third item
+shoppingCart *= 0.9; // Apply 10% discount (1 - 0.1 = 0.9)
+shoppingCart *= 1.15; // Apply 15% VAT (1 + 0.15 = 1.15)
+console.log(shoppingCart); // 517.5
+
+// 3. Comparison operator
+// Comparison: Validate a signup form. User must be at least 18, password must have at least 8
+// characters, confirmed email must exactly match typed email.
+
+let userAge = 20;
+let password = "securePass369";
+let confirmPassword = "securePass369";
+let email = "user@hotmail.com";
+let confirmEmail = "user@hotmail.com";
+
+if (userAge >= 18 && password.length >= 8 && email === confirmEmail) {
+    console.log("Signup successful!");
+} else {
+    console.log("Signup failed. Please check your inputs.");
+}  
+
+// 4. Logical operator
+// Logical: A user can access the premium dashboard IF (logged in AND email verified) OR
+// (they are an admin).
+
+let loggedIn = true;
+let emailVerified = false;
+let isAdmin = true;
+
+if ((loggedIn && emailVerified) || isAdmin) {
+    console.log("Access granted to premium dashboard.");
+} else {
+    console.log("Access denied.");
+}
+
+// 5. Unary: Convert the string '25' from a form field into a number using the unary + operator.
+// Then toggle a boolean 'isDarkMode' flag using !.
+let formValue = '25';
+let numberValue = +formValue;
+let isDarkMode = false;
+isDarkMode = !isDarkMode;
+console.log(numberValue); // 25
+console.log(isDarkMode); // true
+
+// 6. Ternary: Display a membership badge: 'Premium Member' if membershipType is 'premium',
+// else 'Trial Member' if 'trial', else 'Free Member'.
+let membershipType = 'premium';
+let badge = membershipType === 'premium' ? 'Premium Member' : membershipType === 'trial' ? 'Trial Member' : 'Free Member';
+console.log(badge); // Premium Member
+
+// 7. String concatenation: Build the greeting 'Welcome back Thabo Nkosi, you are 28 years old.'
+// once with + and once with a template literal. Comment on which is better and why.
+
+let firstName = "Refilwe";
+let lastName = "Segoe";
+let userAge2 = 33;
+
+// Using + operator
+let greeting1 = "Welcome back " + firstName + " " + lastName + ", you are " + userAge2 + " years old.";
+console.log(greeting1); // Welcome back Refilwe Segoe, you are 33 years old.
+
+// Using template literal
+let greeting2 = `Welcome back ${firstName} ${lastName}, you are ${userAge2} years old.`;
+console.log(greeting2); // Welcome back Refilwe Segoe, you are 33 years old.
+
+// Comment: The template literal is better because it is more readable and easier to maintain, 
+// especially when dealing with multiple variables and complex strings. 
+// It avoids the need for concatenation operators and makes the code cleaner.
+
+// 1 Prefix (++x) vs postfix (x++) — show it with a one-line example where they produce
+// different outputs.
+// let x = 5;
+// let y = ++x; // y = 6, x = 6
+// let z = x++; // z = 6, x = 7
+
+// 2 Three concrete real-world uses for the modulo operator (one of them is even/odd — give
+// two more).
+// Use case 1: Determine if a number is even or odd
+// let num = 10;
+// if (num % 2 === 0) {
+//     console.log("The number is even.");
+// } else {
+//     console.log("The number is odd.");
+// }
+
+// Use case 2: Cycle through an array of colors
+// let colors = ["red", "green", "blue"];
+// let currentIndex = 5;
+// let color = colors[currentIndex % colors.length]; // Cycles back to the beginning if index exceeds array length
+
+// // Use case 3: Check if a year is a leap year
+// let year = 2024;
+// if (year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0)) {
+//     console.log("The year is a leap year.");
+// } else {
+//     console.log("The year is not a leap year.");
+// }
