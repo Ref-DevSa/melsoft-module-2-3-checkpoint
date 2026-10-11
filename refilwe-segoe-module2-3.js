@@ -724,7 +724,7 @@ console.log(100 >= 90 ? 'A' : 100 >= 80 ? 'B' : 100 >= 70 ? 'C' : 100 >= 60 ? 'D
 
 // Test each on three users: one with full data, one missing address, one that is null.
 // testUser1 = { name: "Siya", address: { city: "Pretoria" } };
-// testUser2 = { name: "Gina" };
+// testUser2 = { name: "Gina", address: { city: "Johannesburg" } };
 // testUser3 = null;
 
 // Part D — Predict the output
