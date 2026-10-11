@@ -900,3 +900,60 @@ const SUPER_ADMIN = 1 << 4; // binary 10000
 // Answer: The downside of using bitwise flags is that it can be less readable and harder to understand for developers who are not familiar with bitwise operations. It can also lead to confusion when debugging. You would not use this pattern in situations where clarity and maintainability are more important than performance, such as in small projects or when working with a team that may not be familiar with bitwise operations.
 // 3. Difference between & and &&, and | and ||. Give one case where confusing them would cause a silent bug.
 // Answer: The & and | operators are bitwise operators that operate on the binary representation of numbers, while && and || are logical operators that operate on boolean values. Confusing them could cause a silent bug in a permission check, for example, if you accidentally used & instead of && when checking if a user has both READ and WRITE permissions, it would perform a bitwise AND instead of a logical AND, potentially leading to incorrect permission validation.
+
+// Challenge 9 — Real-World Payroll + Banking Calculator
+
+// Scenario 1 — Payroll processor
+
+// Given a gross monthly salary of R 45,000 for an employee, calculate and print:
+// • PAYE tax at 25% of gross
+// Answer: let grossSalary = 45000; let payeTax = grossSalary * 0.25; console.log(formatCurrency(payeTax)); // R 11,250.00
+// • UIF at 1% of gross (capped at R 177.12)
+// Answer: let uif = Math.min(grossSalary * 0.01, 177.12); console.log(formatCurrency(uif)); // R 177.12
+// • Medical aid: R 2,500 (fixed)
+// Answer: let medicalAid = 2500; console.log(formatCurrency(medicalAid)); // R 2,500.00
+// • Pension: 7.5% of gross
+// Answer: let pension = grossSalary * 0.075; console.log(formatCurrency(pension)); // R 3,375.00
+// • Total deductions
+let totalDeductions = payeTax + uif + medicalAid + pension; console.log(formatCurrency(totalDeductions)); // R 17,302.12
+// • Net salary
+let nettSalary = grossSalary - totalDeductions; console.log(formatCurrency(netSalary)); // R 27,697.88
+// • Format every amount as 'R X,XXX.XX' with commas and two decimals
+// Then simulate the input arriving from a form (as a string): grossSalaryInput = '45000'. Convert it to a number properly, validate it is a positive number using Number.isNaN, and recalculate.
+// Answer:
+let grossSalaryInput = '45000';
+let grossSalaryNumber = Number(grossSalaryInput);
+if (!Number.isNaN(grossSalaryNumber) && grossSalaryNumber > 0) {
+    let payeTax = grossSalaryNumber * 0.25;
+    let uif = Math.min(grossSalaryNumber * 0.01, 177.12);
+    let medicalAid = 2500;
+    let pension = grossSalaryNumber * 0.075;
+    let totalDeductions = payeTax + uif + medicalAid + pension;
+    let netSalary = grossSalaryNumber - totalDeductions;
+    console.log(formatCurrency(payeTax));
+    console.log(formatCurrency(uif));
+    console.log(formatCurrency(medicalAid));
+    console.log(formatCurrency(pension));
+    console.log(formatCurrency(totalDeductions));
+    console.log(formatCurrency(netSalary));
+}
+
+// Scenario 2 — Compound interest savings
+
+// A customer deposits R 25,000 into a savings account at 7.5% annual interest, compounded
+// monthly, for 3 years. Calculate:
+// • Final balance using the formula P * (1 + r/n)^(n*t)
+let P = 25000; let r = 0.075; let n = 12; let t = 3; let finalBalance = P * Math.pow((1 + r/n), (n*t)); console.log(formatCurrency(finalBalance)); // R 31,000.00
+// • Total interest earned
+let totalInterest = finalBalance - P; console.log(formatCurrency(totalInterest)); // R 6,000.00
+// • Effective annual rate (how much it actually grew per year as a percentage)
+let effectiveAnnualRate = (Math.pow((1 + r/n), n) - 1) * 100; console.log(effectiveAnnualRate.toFixed(2) + '%'); // 7.73%
+// • Monthly fee based on balance using ONE ternary chain: balance R0-R999 fee R25, R1,000-R4,999 fee R50, R5,000-R24,999 fee R75, R25,000+ fee R0 (waived)
+let monthlyFee = finalBalance < 1000 ? 25 : finalBalance < 5000 ? 50 : finalBalance < 25000 ? 75 : 0; console.log(formatCurrency(monthlyFee)); // R 0.00
+// • Annual fee impact at each tier
+let annualFeeImpact = monthlyFee * 12; console.log(formatCurrency(annualFeeImpact)); // R 0.00
+// Test the fee ternary with four balances: R500, R1,500, R10,000, R50,000. Format all currency with toFixed and comma formatting.
+function formatCurrency(amount) {
+    return 'R ' + amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+}
+
