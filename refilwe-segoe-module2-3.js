@@ -43,16 +43,151 @@ let message = `Good day, my name is ${fullName} and I am ${age} years old. My fa
 // console.log(typeof [1, 2, 3]); // number
 // console.log(typeof function() {}); // number
 
-console.log(typeof null); // string
+console.log(typeof null); // object
 console.log(typeof NaN); // number
-console.log(typeof undefined); // boolean
-console.log(typeof "42"); // number
-console.log(typeof (typeof 42)); // number
-console.log(typeof [1, 2, 3]); // number
-console.log(typeof function() {}); // number
+console.log(typeof undefined); // undefined
+console.log(typeof "42"); // string
+console.log(typeof (typeof 42)); // string
+console.log(typeof [1, 2, 3]); // object
+console.log(typeof function() {}); // function
 
-// Why does typeof null return 'object' = This is a well-known bug in JavaScript and has historical reasons.
-// and typeof NaN return 'number'? = NaN is a JavaScript number that is not a legal number. Even though NaN stands for "Not-a-Number," it’s technically still categorized as a number — it’s just a broken, nonsensical one.
+// Question: Why does typeof null return 'object' and typeof NaN return 'number'? Give the historical reason for one and the technical reason for the other.
+// Answer: typeof null is a well-known bug in JavaScript and has historical reasons. The typeof null operator returns 'object' due to a historical bug in the original 1990s implementation of JavaScript.
+// NaN is a JavaScript number that is not a legal number. Even though NaN stands for "Not-a-Number," it’s technically still categorized as a number — it’s just a broken, nonsensical one.
 // It’s like the system wants to keep everything neat and simple, so it lumps NaN in with all the other numbers because it started out in the number category.
 
-// Give the historical reason for one and the technical reason for the other.
+// Challenge 2 — Type Conversion Workshop
+
+// Part A — Explicit conversion of data types
+
+// 1.1 Converting "123" using all 5 methods (Number, parseInt, parseFloat,
+// Boolean, String), logging the result and its type to the console
+let stringToNumber = Number("123");
+console.log(stringToNumber); // 123
+console.log(typeof stringToNumber); // number
+
+let stringToInteger = parseInt("123");
+console.log(stringToInteger); // 123
+console.log(typeof stringToInteger); // number
+
+let stringToFloat = parseFloat("123");
+console.log(stringToFloat); // 123
+console.log(typeof stringToFloat); // number
+
+let stringToBoolean = Boolean("123");
+console.log(stringToBoolean); // true
+console.log(typeof stringToBoolean); // boolean
+
+let stringToString = String("123");
+console.log(stringToString); // "123"
+console.log(typeof stringToString); // string
+
+// 1.2 Converting "3.14" using all 5 methods (Number, parseInt, parseFloat,
+// Boolean, String), logging the result and its type to the console.
+let stringToNumber2 = Number("3.14");
+console.log(stringToNumber2); // 3.14
+console.log(typeof stringToNumber2); // number
+
+let stringToInteger2 = parseInt("3.14");
+console.log(stringToInteger2); // 3
+console.log(typeof stringToInteger2); // number
+
+let stringToFloat2 = parseFloat("3.14");
+console.log(stringToFloat2); // 3.14
+console.log(typeof stringToFloat2); // number
+
+let stringToBoolean2 = Boolean("3.14");
+console.log(stringToBoolean2); // true
+console.log(typeof stringToBoolean2); // boolean
+
+let stringToString2 = String("3.14");
+console.log(stringToString2); // "3.14"
+console.log(typeof stringToString2); // string
+
+// 1.3 Converting "hello" using all 5 methods (Number, parseInt, parseFloat,
+// Boolean, String), logging the result and its type to the console.
+let stringToNumber3 = Number("hello");
+console.log(stringToNumber3); // NaN
+console.log(typeof stringToNumber3); // number
+
+let stringToInteger3 = parseInt("hello");
+console.log(stringToInteger3); // NaN
+console.log(typeof stringToInteger3); // number 
+
+let stringToFloat3 = parseFloat("hello");
+console.log(stringToFloat3); // NaN
+console.log(typeof stringToFloat3); // number
+
+let stringToBoolean3 = Boolean("hello");
+console.log(stringToBoolean3); // true
+console.log(typeof stringToBoolean3); // boolean
+
+let stringToString3 = String("hello");
+console.log(stringToString3); // "hello"
+console.log(typeof stringToString3); // string
+
+// 1.4 Converting "42abc" using all 5 methods (Number, parseInt, parseFloat,
+// Boolean, String), logging the result and its type to the console.
+let stringToNumber4 = Number("42abc");
+console.log(stringToNumber4); // NaN
+console.log(typeof stringToNumber4); // number
+
+let stringToInteger4 = parseInt("42abc");
+console.log(stringToInteger4); // 42
+console.log(typeof stringToInteger4); // number
+
+let stringToFloat4 = parseFloat("42abc");
+console.log(stringToFloat4); // 42
+console.log(typeof stringToFloat4); // number
+
+let stringToBoolean4 = Boolean("42abc");
+console.log(stringToBoolean4); // true
+console.log(typeof stringToBoolean4); // boolean
+
+let stringToString4 = String("42abc");
+console.log(stringToString4); // "42abc"
+console.log(typeof stringToString4); // string
+
+// 1.5 Converting "" (empty string) using all 5 methods (Number, parseInt, parseFloat,
+// Boolean, String), logging the result and its type to the console.
+let stringToNumber5 = Number("");
+console.log(stringToNumber5); // 0
+console.log(typeof stringToNumber5); // number
+
+let stringToInteger5 = parseInt("");
+console.log(stringToInteger5); // NaN
+console.log(typeof stringToInteger5); // number
+
+let stringToFloat5 = parseFloat("");
+console.log(stringToFloat5); // 0
+console.log(typeof stringToFloat5); // number
+
+let stringToBoolean5 = Boolean("");
+console.log(stringToBoolean5); // false
+console.log(typeof stringToBoolean5); // boolean
+
+let stringToString5 = String("");
+console.log(stringToString5); // ""
+console.log(typeof stringToString5); // string
+
+// 1.6 Converting "0" using all 5 methods (Number, parseInt, parseFloat,
+// Boolean, String), logging the result and its type to the console.
+let stringToNumber6 = Number("0");
+console.log(stringToNumber6); // 0          
+console.log(typeof stringToNumber6); // number
+
+let stringToInteger6 = parseInt("0");
+console.log(stringToInteger6); // 0
+console.log(typeof stringToInteger6); // number
+
+let stringToFloat6 = parseFloat("0");
+console.log(stringToFloat6); // 0
+console.log(typeof stringToFloat6); // number
+
+let stringToBoolean6 = Boolean("0");
+console.log(stringToBoolean6); // true
+console.log(typeof stringToBoolean6); // boolean
+
+let stringToString6 = String("0");
+console.log(stringToString6); // "0"
+console.log(typeof stringToString6); // string
