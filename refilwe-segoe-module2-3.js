@@ -590,3 +590,91 @@ console.log("newPassword === confirmPassword:", newPassword2 === isConfirmedPass
 console.log("currentEmail === confirmEmail:", currentEmail2 === isConfirmedEmail2 ? "PASS" : "FAIL");
 console.log("newPassword !== currentEmail:", newPassword2 !== currentEmail2 ? "PASS" : "FAIL");
 console.log("newPassword.length >= 8:", newPassword2.length >= 8 ? "PASS" : "FAIL");
+
+// Explanation of equality operator choice:
+// I used the strict equality operator (===) for validating the password and email fields because it ensures both value and type are identical.
+// This is crucial for security, as it prevents potential issues with type coercion that could lead to unexpected behavior or vulnerabilities.
+// For example, if we used ==, a string "0" would be equal to the number 0, which could cause unintended validation failures or successes.
+
+// Challenge 5 — Operator Precedence
+
+// You are reviewing a junior developer's financial calculation code and they have written it
+// without parentheses, trusting precedence rules. You need to predict exactly what each
+// expression produces.
+// For each of the 15 expressions, write a comment with your prediction AND the step-by-step
+// evaluation order (which operator fires first, second, third). Then log and verify
+
+// 1. 2 + 3 * 4 - 1
+// Prediction: 13
+// Evaluation order: 3 * 4 = 12, then 2 + 12 = 14, then 14 - 1 = 13
+console.log(2 + 3 * 4 - 1); // 13
+
+// 2. (2 + 3) * (4 - 1)
+// Prediction: 15
+// Evaluation order: 2 + 3 = 5, then 4 - 1 = 3, then 5 * 3 = 15
+console.log((2 + 3) * (4 - 1)); // 15
+
+// 3. 10 - 4 - 2
+// Prediction: 4
+// Evaluation order: 10 - 4 = 6, then 6 - 2 = 4
+console.log(10 - 4 - 2); // 4
+
+// 4. 2 ** 3 ** 2 
+// Prediction: 512 (READ CODE FROM RIGHT TO LEFT)
+// Evaluation order: 3 ** 2 = 9, then 2 ** 9 = 512
+console.log(2 ** 3 ** 2); // 512
+
+// 5. 10 % 3 * 2 + 1
+// Prediction: 5
+// Evaluation order: 10 % 3 = 1, then 1 * 2 = 2, then 2 + 1 = 3
+console.log(10 % 3 * 2 + 1); // 5
+
+// 6. 100 / 4 / 5
+// Prediction: 5
+// Evaluation order: 100 / 4 = 25, then 25 / 5 = 5
+console.log(100 / 4 / 5); // 5
+
+// 7. 5 + 2 > 6 && 3 < 4
+// Prediction: true
+// Evaluation order: 5 + 2 = 7, then 7 > 6 = true, then 3 < 4 = true, then true && true = true
+console.log(5 + 2 > 6 && 3 < 4); // true
+
+// 8. true && false || true && true
+// Prediction: true
+// Evaluation order: true && false = false, then true && true = true, then false || true = true
+console.log(true && false || true && true); // true
+
+// 9. !false && !!0
+// Prediction: false
+// Evaluation order: !false = true, then !!0 = false, then true && false = false
+console.log(!false && !!0); // false
+
+// 10. 5 > 3 && 10 < 20 || !(2 === "2")
+// Prediction: true
+// Evaluation order: 5 > 3 = true, then 10 < 20 = true, then true && true = true, then 2 === "2" = false, then !(false) = true, then true || true = true
+console.log(5 > 3 && 10 < 20 || !(2 === "2")); // true
+
+// 11. 1000 * 1.15 * 0.9
+// Prediction: 1035
+// Evaluation order: 1000 * 1.15 = 1150, then 1150 * 0.9 = 1035
+console.log(1000 * 1.15 * 0.9); // 1035
+
+// 12. typeof 5 + 1
+// Prediction: "number1"
+// Evaluation order: typeof 5 = "number", then "number" + 1 = "number1"
+console.log(typeof 5 + 1); // "number1"
+
+// 13. typeof (5 + 1)
+// Prediction: "string"
+// Evaluation order: 5 + 1 = 6, then typeof 6 = "number"
+console.log(typeof (5 + 1)); // "number"
+
+// 14. "5" + 3 * 2
+// Prediction: "56"
+// Evaluation order: 3 * 2 = 6, then "5" + 6 = "56"
+console.log("5" + 3 * 2); // "56"
+
+// 15. "5" - 3 + 2
+// Prediction: 4
+// Evaluation order: "5" - 3 = 2, then 2 + 2 = 4
+console.log("5" - 3 + 2); // 4
