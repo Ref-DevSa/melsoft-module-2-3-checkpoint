@@ -35,15 +35,13 @@ let message = `Good day, my name is ${fullName} and I am ${age} years old. My fa
 // Part B: Using typeof to Check the Data Types of Your Variables with output predictions before execution
 
 //Prediction:
-//console.log(typeof fullName); -> string
-//console.log(typeof age); -> number
-//console.log(typeof enjoyingJavaScript); -> boolean
-//console.log(typeof favouriteTemperature); // number
-//console.log(typeof notANumber); // number
-//console.log(typeof infinity); // number
-//console.log(typeof maxSafeInteger); // number
-//console.log(typeof nullValue); // object
-//console.log(typeof undefinedValue); // undefined
+// console.log(typeof null); // string
+// console.log(typeof NaN); // number
+// console.log(typeof undefined); // boolean
+// console.log(typeof "42"); // number
+// console.log(typeof (typeof 42)); // number
+// console.log(typeof [1, 2, 3]); // number
+// console.log(typeof function() {}); // number
 
 console.log(typeof null); // string
 console.log(typeof NaN); // number
@@ -53,5 +51,8 @@ console.log(typeof (typeof 42)); // number
 console.log(typeof [1, 2, 3]); // number
 console.log(typeof function() {}); // number
 
-// Why does typeof null return 'object' and typeof NaN return 'number'? 
+// Why does typeof null return 'object' = This is a well-known bug in JavaScript and has historical reasons.
+// and typeof NaN return 'number'? = NaN is a JavaScript number that is not a legal number. Even though NaN stands for "Not-a-Number," it’s technically still categorized as a number — it’s just a broken, nonsensical one.
+// It’s like the system wants to keep everything neat and simple, so it lumps NaN in with all the other numbers because it started out in the number category.
+
 // Give the historical reason for one and the technical reason for the other.
