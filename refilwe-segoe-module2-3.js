@@ -598,12 +598,6 @@ console.log("newPassword.length >= 8:", newPassword2.length >= 8 ? "PASS" : "FAI
 
 // Challenge 5 — Operator Precedence
 
-// You are reviewing a junior developer's financial calculation code and they have written it
-// without parentheses, trusting precedence rules. You need to predict exactly what each
-// expression produces.
-// For each of the 15 expressions, write a comment with your prediction AND the step-by-step
-// evaluation order (which operator fires first, second, third). Then log and verify
-
 // 1. 2 + 3 * 4 - 1
 // Prediction: 13
 // Evaluation order: 3 * 4 = 12, then 2 + 12 = 14, then 14 - 1 = 13
@@ -678,3 +672,57 @@ console.log("5" + 3 * 2); // "56"
 // Prediction: 4
 // Evaluation order: "5" - 3 = 2, then 2 + 2 = 4
 console.log("5" - 3 + 2); // 4
+
+// Interview answer: when should you add parentheses even when precedence does not require
+// them? Give your reasoning in 2-3 sentences.
+// Answer: You should add parentheses when it improves readability or when you want to make the evaluation order explicit, 
+// even if the default precedence would produce the same result. This helps prevent confusion and makes the code easier to maintain.
+
+// Challenge 6 — Ternary and Short-Circuit Patterns
+
+// Part A — Ternary chain for grade conversion
+
+console.log(95 >= 90 ? 'A' : 95 >= 80 ? 'B' : 95 >= 70 ? 'C' : 95 >= 60 ? 'D' : 95 >= 50 ? 'E' : 'F');
+console.log(82 >= 90 ? 'A' : 82 >= 80 ? 'B' : 82 >= 70 ? 'C' : 82 >= 60 ? 'D' : 82 >= 50 ? 'E' : 'F');
+console.log(73 >= 90 ? 'A' : 73 >= 80 ? 'B' : 73 >= 70 ? 'C' : 73 >= 60 ? 'D' : 73 >= 50 ? 'E' : 'F');
+console.log(65 >= 90 ? 'A' : 65 >= 80 ? 'B' : 65 >= 70 ? 'C' : 65 >= 60 ? 'D' : 65 >= 50 ? 'E' : 'F');
+console.log(54 >= 90 ? 'A' : 54 >= 80 ? 'B' : 54 >= 70 ? 'C' : 54 >= 60 ? 'D' : 54 >= 50 ? 'E' : 'F');
+console.log(42 >= 90 ? 'A' : 42 >= 80 ? 'B' : 42 >= 70 ? 'C' : 42 >= 60 ? 'D' : 42 >= 50 ? 'E' : 'F');
+console.log(0 >= 90 ? 'A' : 0 >= 80 ? 'B' : 0 >= 70 ? 'C' : 0 >= 60 ? 'D' : 0 >= 50 ? 'E' : 'F');
+console.log(100 >= 90 ? 'A' : 100 >= 80 ? 'B' : 100 >= 70 ? 'C' : 100 >= 60 ? 'D' : 100 >= 50 ? 'E' : 'F');
+
+// Part B — Short-circuit defaults
+
+// You are parsing a user profile from an API where many fields may be missing. Assign sensible
+// defaults:
+// • displayName — default to 'Guest User' using the || operator
+// • theme — default to 'light' using the || operator
+// • maxResults — default to 10 using the || operator
+// • lastLogin — default to 'Never' using the ?? (nullish coalescing) operator
+// • notificationCount — default to 0 using the ?? operator
+// Test with TWO user objects: one where all fields are missing, one where notificationCount is 0
+// and theme is empty string ''. Explain in comments WHY ?? and || behave differently for those
+// two cases.
+
+// Part C — Guard clauses with && and ?.
+
+// You have a user object that may or may not have a nested address.city property. Safely
+// access the city using THREE different techniques:
+// 1. Using && guard clauses: user && user.address && user.address.city
+// 2. Using optional chaining: user?.address?.city
+// 3. Using a combination with a default: user?.address?.city ?? 'Unknown city'
+// Test each on three users: one with full data, one missing address, one that is null.
+
+// Part D — Predict the output
+
+// For each expression, predict output AND type before running:
+// 1 null || undefined || 0 || "" || "finally"
+// 2 null ?? undefined ?? 0 ?? "" ?? "finally"
+// 3 0 || "first truthy"
+// 4 0 ?? "first non-nullish"
+// 5 true && false && "never reached"
+// 6 "first" && "second" && "third"
+// 7 false || (true && "yes")
+// 8 (false || true) && "yes"
+// 9 1 && 2 && 3
+// 10 null?.foo?.bar?.baz
