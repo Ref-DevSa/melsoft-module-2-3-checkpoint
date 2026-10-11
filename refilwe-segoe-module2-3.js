@@ -794,3 +794,31 @@ console.log(typeof NaN);
 // 10. typeof undeclaredVariable (does not throw — why?)
 // Prediction: "undefined"
 console.log(typeof undeclaredVariable);
+
+// Part B — instanceof
+
+// Predict and verify instanceof for each:
+// 1. [] instanceof Array
+// Prediction: true
+console.log([] instanceof Array);
+// 2. [] instanceof Object
+// Prediction: true
+console.log([] instanceof Object);
+// 3. {} instanceof Object
+// Prediction: true
+console.log({} instanceof Object);
+// 4. "hello" instanceof String (false — why?)
+// Prediction: false
+console.log("hello" instanceof String);
+// 5. new String("hello") instanceof String
+// Prediction: true
+console.log(new String("hello") instanceof String);
+// 6. 42 instanceof Number
+// Prediction: true
+console.log(42 instanceof Number);
+// 7. new Date() instanceof Date
+// Prediction: true
+console.log(new Date() instanceof Date);
+// 8. /abc/ instanceof RegExp
+// Prediction: true
+console.log(/abc/ instanceof RegExp);
