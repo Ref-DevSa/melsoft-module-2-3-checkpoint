@@ -191,3 +191,122 @@ console.log(typeof stringToBoolean6); // boolean
 let stringToString6 = String("0");
 console.log(stringToString6); // "0"
 console.log(typeof stringToString6); // string
+
+// 1.7 Converting null using all 5 methods (Number, parseInt, parseFloat,
+// Boolean, String), logging the result and its type to the console.
+let nullToNumber = Number(null);
+console.log(nullToNumber); // 0
+console.log(typeof nullToNumber); // number
+
+let nullToInteger = parseInt(null);
+console.log(nullToInteger); // NaN
+console.log(typeof nullToInteger); // number
+
+let nullToFloat = parseFloat(null);
+console.log(nullToFloat); // 0
+console.log(typeof nullToFloat); // number
+
+let nullToBoolean = Boolean(null);
+console.log(nullToBoolean); // false
+console.log(typeof nullToBoolean); // boolean
+
+let nullToString = String(null);
+console.log(nullToString); // "null"
+console.log(typeof nullToString); // string
+
+// 1.8 Converting undefined using all 5 methods (Number, parseInt, parseFloat,
+// Boolean, String), logging the result and its type to the console.
+let undefinedToNumber = Number(undefined);
+console.log(undefinedToNumber); // NaN
+console.log(typeof undefinedToNumber); // number
+
+let undefinedToInteger = parseInt(undefined);
+console.log(undefinedToInteger); // NaN
+console.log(typeof undefinedToInteger); // number
+
+let undefinedToFloat = parseFloat(undefined);
+console.log(undefinedToFloat); // NaN
+console.log(typeof undefinedToFloat); // number
+
+let undefinedToBoolean = Boolean(undefined);
+console.log(undefinedToBoolean); // false
+console.log(typeof undefinedToBoolean); // boolean
+
+let undefinedToString = String(undefined);
+console.log(undefinedToString); // "undefined"
+console.log(typeof undefinedToString); // string 
+
+// Part B — Implicit coercion - predicting the output AND the resulting type, then verifying by
+//logging.
+
+// 1.  "5" + 3
+// Prediction: "53" (string)
+// Resulting type: string
+console.log("5" + 3); // "53"
+console.log(typeof ("5" + 3)); // string
+
+// 2.  "5" - 3
+// Prediction: 2 (number)
+// Resulting type: number
+console.log("5" - 3); // 2
+console.log(typeof ("5" - 3)); // number
+
+// 3.  "5" * "2"
+// Prediction: 10 (number)
+// Resulting type: number
+console.log("5" * "2"); // 10
+console.log(typeof ("5" * "2")); // number
+
+// 4. true + 1
+// Prediction: 2 (number)
+// Resulting type: number
+console.log(true + 1); // 2
+console.log(typeof (true + 1)); // number
+
+// 5. true + "1"
+// Prediction: "true1" (string)
+// Resulting type: string
+console.log(true + "1"); // "true1"
+console.log(typeof (true + "1")); // string
+
+// 6. false + null
+// Prediction: 0 (number)
+// Resulting type: number
+console.log(false + null); // 0
+console.log(typeof (false + null)); // number
+
+// 7. undefined + null
+// Prediction: NaN (number)
+// Resulting type: number
+console.log(undefined + null); // NaN
+console.log(typeof (undefined + null)); // number
+
+// 8. 1/ 0 
+// Prediction: Infinity (number)
+// Resulting type: number
+console.log(1 / 0); // Infinity
+console.log(typeof (1 / 0)); // number
+
+// 9. 0 / 0
+// Prediction: NaN (number)
+// Resulting type: number
+console.log(0 / 0); // NaN
+console.log(typeof (0 / 0)); // number
+
+// 10. "abc" - 1
+// Prediction: NaN (number)
+// Resulting type: number
+console.log("abc" - 1); // NaN
+console.log(typeof ("abc" - 1)); // number
+
+// 11. [] + []
+// Prediction: "" (string)
+// Resulting type: string
+console.log([] + []); // ""
+console.log(typeof ([] + [])); // string
+
+// 12. [1] + [2]
+// Prediction: "12" (string)
+// Resulting type: string
+console.log([1] + [2]); // "12"
+console.log(typeof ([1] + [2])); // string
