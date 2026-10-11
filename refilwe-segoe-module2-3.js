@@ -696,33 +696,101 @@ console.log(100 >= 90 ? 'A' : 100 >= 80 ? 'B' : 100 >= 70 ? 'C' : 100 >= 60 ? 'D
 // You are parsing a user profile from an API where many fields may be missing. Assign sensible
 // defaults:
 // • displayName — default to 'Guest User' using the || operator
+// Answer: The || operator returns the first truthy value it encounters. If displayName is missing or falsy (like an empty string), it will default to 'Guest User'.
 // • theme — default to 'light' using the || operator
+// Answer: The || operator returns the first truthy value it encounters. If theme is missing or falsy (like an empty string), it will default to 'light'.
 // • maxResults — default to 10 using the || operator
+// Answer: The || operator returns the first truthy value it encounters. If maxResults is missing or falsy (like an empty string), it will default to 10.
 // • lastLogin — default to 'Never' using the ?? (nullish coalescing) operator
+// Answer: The ?? operator returns the right-hand side operand only if the left-hand side is null or undefined. If lastLogin is null or undefined, it will default to 'Never'.
 // • notificationCount — default to 0 using the ?? operator
+// Answer: The ?? operator returns the right-hand side operand only if the left-hand side is null or undefined. If notificationCount is null or undefined, it will default to 0.
+
 // Test with TWO user objects: one where all fields are missing, one where notificationCount is 0
 // and theme is empty string ''. Explain in comments WHY ?? and || behave differently for those
 // two cases.
+// Answer: The || operator treats any falsy value (like 0, '', null, undefined) as a trigger to return the default value. In contrast, the ?? operator only considers null and undefined as triggers for the default value. Therefore, if notificationCount is 0 or theme is an empty string, || would return the default values, while ?? would not, since 0 and '' are not null or undefined.
 
 // Part C — Guard clauses with && and ?.
 
 // You have a user object that may or may not have a nested address.city property. Safely
 // access the city using THREE different techniques:
 // 1. Using && guard clauses: user && user.address && user.address.city
+// Answer: This technique checks each level of the object hierarchy to ensure that it exists before attempting to access the next level. If any level is undefined or null, the entire expression short-circuits and returns undefined, preventing runtime errors.
 // 2. Using optional chaining: user?.address?.city
+// Answer: This technique uses the optional chaining operator (?.) to safely access nested properties. If any level of the object hierarchy is undefined or null, the expression short-circuits and returns undefined, preventing runtime errors.
 // 3. Using a combination with a default: user?.address?.city ?? 'Unknown city'
+// Answer: This technique combines optional chaining with the nullish coalescing operator (??) to provide a default value if the nested property is undefined or null. If user?.address?.city is undefined or null, it will return 'Unknown city' instead of throwing an error.
+
 // Test each on three users: one with full data, one missing address, one that is null.
+// testUser1 = { name: "Siya", address: { city: "Pretoria" } };
+// testUser2 = { name: "Gina" };
+// testUser3 = null;
 
 // Part D — Predict the output
 
 // For each expression, predict output AND type before running:
 // 1 null || undefined || 0 || "" || "finally"
+// Prediction: "finally" (string)
+console.log(null || undefined || 0 || "" || "finally");
 // 2 null ?? undefined ?? 0 ?? "" ?? "finally"
+// Prediction: "finally" (string)
+console.log(null ?? undefined ?? 0 ?? "" ?? "finally");
 // 3 0 || "first truthy"
+// Prediction: "first truthy" (string)
+console.log(0 || "first truthy");
 // 4 0 ?? "first non-nullish"
+// Prediction: 0 (number)
+console.log(0 ?? "first non-nullish");
 // 5 true && false && "never reached"
+// Prediction: false (boolean)
+console.log(true && false && "never reached");
 // 6 "first" && "second" && "third"
+// Prediction: "third" (string)
+console.log("first" && "second" && "third");
 // 7 false || (true && "yes")
+// Prediction: "yes" (string)
+console.log(false || (true && "yes"));
 // 8 (false || true) && "yes"
+// Prediction: "yes" (string)
+console.log((false || true) && "yes");
 // 9 1 && 2 && 3
+// Prediction: 3 (number)
+console.log(1 && 2 && 3);
 // 10 null?.foo?.bar?.baz
+// Prediction: undefined
+console.log(null?.foo?.bar?.baz);
+
+// Challenge 7 — typeof, instanceof, delete
+
+// Predict and verify typeof for each:
+// 1. typeof 42
+// Prediction: "number"
+console.log(typeof 42);
+// 2. typeof "hello"
+// Prediction: "string"
+console.log(typeof "hello");
+// 3. typeof true
+// Prediction: "boolean"
+console.log(typeof true);
+// 4. typeof undefined
+// Prediction: "undefined"
+console.log(typeof undefined);
+// 5. typeof null (the famous bug)
+// Prediction: "object"
+console.log(typeof null);
+// 6. typeof {}
+// Prediction: "object"
+console.log(typeof {});
+// 7. typeof [] (another trap)
+// Prediction: "object"
+console.log(typeof []);
+// 8. typeof function() {}
+// Prediction: "function"
+console.log(typeof function() {});
+// 9. typeof NaN
+// Prediction: "number"
+console.log(typeof NaN);
+// 10. typeof undeclaredVariable (does not throw — why?)
+// Prediction: "undefined"
+console.log(typeof undeclaredVariable);
