@@ -554,3 +554,39 @@ console.log([] == 0); // true
 console.log([0] == false); // true
 // Explanation: In loose equality, the array [0] is converted to the number 0, which is then compared to the boolean false (which is also converted to 0).
 
+// Part B — Real-world form validator
+
+// Write a validation script for a password-reset form with four fields: newPassword,
+// confirmPassword, currentEmail, confirmEmail. Validate that:
+// • newPassword and confirmPassword match EXACTLY (including type)
+// • currentEmail and confirmEmail match EXACTLY
+// • newPassword is NOT the same as the current email (bad practice to use email as password)
+// • newPassword length is at least 8 characters
+// Print a clear PASS or FAIL for each check. Run with two test cases: one that passes all four,
+// one that fails at least two.
+// At the end: which equality operator did you use (== or ===), and why does that choice matter
+// specifically for password validation?
+
+let newPassword = "Melsoft123";
+let isConfirmedPassword = "Melsoft123";
+let currentEmail = "user@slowmail.com";
+let isConfirmedEmail = "user@slowmail.com";
+
+// Test Case 1: All checks pass
+console.log("Test Case 1: All checks pass");
+console.log("newPassword === confirmPassword:", newPassword === isConfirmedPassword ? "PASS" : "FAIL");
+console.log("currentEmail === confirmEmail:", currentEmail === isConfirmedEmail ? "PASS" : "FAIL");
+console.log("newPassword !== currentEmail:", newPassword !== currentEmail ? "PASS" : "FAIL");
+console.log("newPassword.length >= 8:", newPassword.length >= 8 ? "PASS" : "FAIL");
+
+// Test Case 2: Fails at least two checks
+let newPassword2 = "SecurePass123";
+let isConfirmedPassword2 = "SecurePass123";
+let currentEmail2 = "user@example.com";
+let isConfirmedEmail2 = "user@example.com";
+
+console.log("\nTest Case 2: Fails at least two checks");
+console.log("newPassword === confirmPassword:", newPassword2 === isConfirmedPassword2 ? "PASS" : "FAIL");
+console.log("currentEmail === confirmEmail:", currentEmail2 === isConfirmedEmail2 ? "PASS" : "FAIL");
+console.log("newPassword !== currentEmail:", newPassword2 !== currentEmail2 ? "PASS" : "FAIL");
+console.log("newPassword.length >= 8:", newPassword2.length >= 8 ? "PASS" : "FAIL");
