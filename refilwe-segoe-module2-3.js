@@ -310,3 +310,21 @@ console.log(typeof ([] + [])); // string
 // Resulting type: string
 console.log([1] + [2]); // "12"
 console.log(typeof ([1] + [2])); // string
+
+// Part C — The three questions
+
+// 1. What is the exact difference between Number('42abc') and parseInt('42abc')? Give the
+//    exact return value of each.
+//    Number('42abc') returns NaN (Not-a-Number) because the entire string cannot be converted to a number.
+//    parseInt('42abc') returns 42 because it extracts the integer part from the beginning of the string.
+
+// 2. When would you reach for parseFloat instead of parseInt in real code? Give a scenario
+//    where getting it wrong costs money.
+//    Scenario: Calculating the total cost of items in a shopping cart where prices are stored as strings with decimal points. 
+//    Using parseInt would truncate the decimal places, leading to incorrect total calculations and potential financial loss.
+
+// 3. What does Number('') return, and why is that a common source of production bugs? Give a
+//    specific form-field example.
+//    Number('') returns 0 because an empty string is converted to zero when parsed as a number.
+//    This can cause issues in form validation or data processing where an empty field should be treated as invalid or missing data.
+
