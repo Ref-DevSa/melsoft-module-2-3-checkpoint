@@ -822,3 +822,81 @@ console.log(new Date() instanceof Date);
 // 8. /abc/ instanceof RegExp
 // Prediction: true
 console.log(/abc/ instanceof RegExp);
+
+// In a comment, explain: ONE case where typeof is the right tool and instanceof is wrong, and
+// ONE case where instanceof is right and typeof is wrong.
+// typeof is right when checking the type of a primitive value (e.g., typeof "hello" === "string")
+// instanceof is right when checking if an object is an instance of a particular class (e.g., new Date() instanceof Date)
+
+// Part C — delete and its gotchas
+
+// 1. Create `const user = { name: 'Lerato', age: 25, role: 'student' };` then delete user.role. Log
+// before and after.
+const user = { name: 'Lerato', age: 25, role: 'student' };
+console.log(user);
+delete user.role;
+console.log(user);
+
+// 2. Try `let x = 5; delete x;` — what happens? What does delete return?
+let x = 5;
+// console.log(delete x);
+
+// 3. `const arr = [1, 2, 3, 4]; delete arr[1];` — log arr, arr.length, arr[1]. Write a comment explaining
+// why delete on arrays is dangerous.
+const arr = [1, 2, 3, 4];
+delete arr[1];
+console.log(arr);
+console.log(arr.length);
+console.log(arr[1]);
+// 4. `delete Math.PI;` — does it work? Why not? What is a non-configurable property?
+console.log(delete Math.PI);
+
+// Final question: You have an array of items and need to remove one. Why would you NOT use
+// delete, and what should you use instead? (You can mention methods you have not been formally taught yet — 
+// this question tests whether you can research.)
+
+//  Challenge 8 — Bitwise Permission System
+
+// Build a role-based permission system using bitwise flags. Real production systems use this
+// pattern — Unix file permissions (rwx = 4+2+1 = 7) are the classic example.
+// Define permissions as powers of 2 (each permission is one bit):
+// const READ = 1; // binary 0001
+// const WRITE = 2; // binary 0010
+// const DELETE = 4; // binary 0100
+// const ADMIN = 8; // binary 1000
+// Implement each with console.log output:
+// 1.  Create a user with READ + WRITE using the | (OR) operator.
+// Answer: You can create a user with READ and WRITE permissions by using the bitwise OR operator (|) to combine the two permission values. For example, if you have a user object, you can set their permissions like this:
+const READ = 1;
+const WRITE = 2;
+const DELETE = 4;
+const ADMIN = 8;
+let userPermissions = READ | WRITE;
+// 2.  Create an admin user with ALL permissions.
+let adminPermissions = READ | WRITE | DELETE | ADMIN;
+// 3.  Check if the first user has READ permission using &. Print 'Yes' or 'No'.
+console.log((userPermissions & READ) ? 'Yes' : 'No');
+// 4.  Check if the first user has DELETE permission using &. Print 'Yes' or 'No'.
+console.log((userPermissions & DELETE) ? 'Yes' : 'No');
+// 5.  Grant DELETE to the first user using |= (compound bitwise OR assignment).
+userPermissions |= DELETE;
+// 6.  Revoke WRITE from the first user using & with ~ (NOT). This is the trickiest line in the project.
+userPermissions &= ~WRITE;
+// 7 Use XOR (^) to toggle the ADMIN permission on a user. Call it twice to show it toggles on then off.
+userPermissions ^= ADMIN; // Toggle on
+console.log((userPermissions & ADMIN) ? 'Admin permission granted' : 'Admin permission revoked');
+userPermissions ^= ADMIN; // Toggle off
+console.log((userPermissions & ADMIN) ? 'Admin permission granted' : 'Admin permission revoked'); 
+// 8 Use << (left shift) to add a new SUPER_ADMIN permission as the next power of 2 without hardcoding 16.
+const SUPER_ADMIN = 1 << 4; // binary 10000
+
+// Interview answers:
+// 1. Why use bitwise flags for permissions instead of an array like ['read', 'write']? Give two
+// concrete reasons.
+// Answer:
+// Reason 1: Bitwise flags are more memory-efficient because they use a single integer to represent multiple permissions, while an array would require more memory to store each permission as a separate string.
+// Reason 2: Bitwise operations are faster for checking, granting, and revoking permissions compared to searching through an array, which can be slower and less efficient, especially with a large number of permissions.
+// 2. What is the real-world downside? When would you NOT use this pattern?
+// Answer: The downside of using bitwise flags is that it can be less readable and harder to understand for developers who are not familiar with bitwise operations. It can also lead to confusion when debugging. You would not use this pattern in situations where clarity and maintainability are more important than performance, such as in small projects or when working with a team that may not be familiar with bitwise operations.
+// 3. Difference between & and &&, and | and ||. Give one case where confusing them would cause a silent bug.
+// Answer: The & and | operators are bitwise operators that operate on the binary representation of numbers, while && and || are logical operators that operate on boolean values. Confusing them could cause a silent bug in a permission check, for example, if you accidentally used & instead of && when checking if a user has both READ and WRITE permissions, it would perform a bitwise AND instead of a logical AND, potentially leading to incorrect permission validation.
