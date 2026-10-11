@@ -443,3 +443,114 @@ console.log(greeting2); // Welcome back Refilwe Segoe, you are 33 years old.
 // } else {
 //     console.log("The year is not a leap year.");
 // }
+
+// 3. Nested ternaries: good practice or not? When would you NOT use one?
+// Nested ternaries can make code harder to read and maintain, especially when dealing with complex conditions. 
+// It's generally better to use if-else statements for clarity and simplicity.
+
+// Challenge 4 — 
+// Part A - The Equality Deep Dive
+
+// For each of the 20 comparisons below, write a comment with your PREDICTION before you run
+// it. Then log the actual result. For each case, add a one-line note explaining WHY.
+
+// 1. 0 == false
+// Prediction: true
+console.log(0 == false); // true
+// Explanation: In loose equality, 0 is coerced to false, so they are considered equal.
+
+// 2. 0 === false
+// Prediction: false
+console.log(0 === false); // false
+// Explanation: Strict equality checks both value and type. 0 is a number, while false is a boolean, so they are not equal.
+
+// 3. "" == 0
+// Prediction: true
+console.log("" == 0); // true
+// Explanation: In loose equality, an empty string is coerced to 0, so they are considered equal.
+
+// 4. "" === 0
+// Prediction: false
+console.log("" === 0); // false
+// Explanation: Strict equality checks both value and type. An empty string is a string, while 0 is a number, so they are not equal.
+
+// 5. "0" == 0
+// Prediction: true
+console.log("0" == 0); // true
+// Explanation: In loose equality, the string "0" is coerced to the number 0, so they are considered equal.
+
+// 6. "0" === 0
+// Prediction: false
+console.log("0" === 0); // false
+// Explanation: Strict equality checks both value and type. The string "0" is a string, while 0 is a number, so they are not equal.
+
+// 7. null == undefined
+// Prediction: true
+console.log(null == undefined); // true
+// Explanation: In loose equality, null and undefined are considered equal.
+
+// 8. null === undefined
+// Prediction: false
+console.log(null === undefined); // false
+// Explanation: Strict equality checks both value and type. null is an object, while undefined is a different type, so they are not equal.
+
+// 9. null == 0
+// Prediction: false
+console.log(null == 0); // false
+// Explanation: In loose equality, null is only equal to undefined, not to any other value, including 0.
+
+// 10. null >= 0
+// Prediction: true
+console.log(null >= 0); // true
+// Explanation: In comparisons, null is coerced to 0, so null >= 0 evaluates to true.
+
+// 11. null > 0
+// Prediction: false
+console.log(null > 0); // false
+// Explanation: In comparisons, null is coerced to 0, so null > 0 evaluates to false.
+
+// 12. NaN == NaN
+// Prediction: false
+console.log(NaN == NaN); // false
+// Explanation: NaN is not equal to anything, including itself, according to the IEEE 754 standard.
+
+// 13. NaN === NaN
+// Prediction: false
+console.log(NaN === NaN); // false
+// Explanation: Strict equality also considers NaN not equal to itself, following the same IEEE 754 standard.
+
+// 14. Object.is(NaN, NaN)
+// Prediction: true
+console.log(Object.is(NaN, NaN)); // true
+// Explanation: Object.is is a method that correctly identifies NaN as equal to itself, unlike the == and === operators.
+
+// 15. +0 === -0
+// Prediction: true
+console.log(+0 === -0); // true
+// Explanation: In strict equality, +0 and -0 are considered equal, even though they have different signs.
+
+// 16. Object.is(+0, -0)
+// Prediction: false
+console.log(Object.is(+0, -0)); // false
+// Explanation: Object.is distinguishes between +0 and -0, treating them as different values.
+
+// 17. [1,2,3] == "1,2,3"
+// Prediction: true
+console.log([1,2,3] == "1,2,3"); // true
+// Explanation: In loose equality, the array is converted to a string by joining its elements with commas, resulting in "1,2,3", which is then compared to the string "1,2,3".
+
+// 18. [] == false
+// Prediction: true
+console.log([] == false); // true
+// Explanation: In loose equality, the empty array is converted to the number 0, which is then compared to the boolean false (which is also converted to 0).
+
+// 19. [] == 0
+// Prediction: true
+console.log([] == 0); // true
+// Explanation: In loose equality, the empty array is converted to the number 0, which is then compared to the number 0.
+
+// 20. [0] == false
+// Prediction: true
+console.log([0] == false); // true
+// Explanation: In loose equality, the array [0] is converted to the number 0, which is then compared to the boolean false (which is also converted to 0).
+
