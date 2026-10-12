@@ -957,3 +957,42 @@ function formatCurrency(amount) {
     return 'R ' + amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
 }
 
+// Scenario 3 — Multi-currency transfer
+
+// A customer wants to send R 15,750.33 to a US bank account. Exchange rate 1 USD = R 18.42.
+// Bank charges 2.5% commission on the ZAR amount.
+// Calculate and print:
+// • Commission in ZAR
+let amountZAR = 15750.33; 
+let commissionRate = 0.025; 
+let commissionZAR = amountZAR * commissionRate; 
+console.log(formatCurrency(commissionZAR)); // R 393.76
+// • ZAR amount after commission
+let amountAfterCommission = amountZAR - commissionZAR; 
+console.log(formatCurrency(amountAfterCommission)); // R 15,356.57
+// • USD amount received (ZAR after commission ÷ exchange rate)
+let exchangeRate = 18.42; 
+let usdAmount = amountAfterCommission / exchangeRate; 
+console.log('$ ' + usdAmount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')); // $ 833.60
+// • Format: ZAR as 'R X,XXX.XX', USD as '$X,XXX.XX'
+
+// Final written answer in a comment block (worth marks): In your calculations above, where did floating-point precision cause a potential problem? 
+// Answer: Floating-point precision can cause issues when dealing with decimal values, especially in financial calculations. For example, when adding 0.1 and 0.2 in JavaScript, the result is not exactly 0.3 due to how floating-point numbers are represented in binary. This can lead to rounding errors and inaccuracies in calculations involving money, which is critical in banking and payroll systems.
+
+// How did you handle it? Describe how a REAL bank would store these amounts internally (hint: not as floats). Reference 0.1 + 0.2 explicitly.
+console.log(0.1 + 0.2); // 0.30000000000000004
+
+// Answer: To handle floating-point precision issues, I used the toFixed method to format the output to two decimal places, ensuring that the displayed values are accurate for financial purposes. A real bank would typically store monetary amounts as integers representing the smallest currency unit (e.g., cents) or use a fixed-point decimal representation to avoid floating-point inaccuracies. For example, instead of storing R 15,750.33 as a float, it would be stored as 1,575,033 cents (an integer). This approach prevents issues like 0.1 + 0.2 resulting in 0.30000000000000004, which can lead to significant errors in financial calculations.
+
+
+// Challenge 10 — User Interaction HTML Flow
+
+// Interview answers (in a <script> comment block at the end):
+// 1 What does 'blocking' mean when we say alert/confirm/prompt are blocking? Why is that a
+// problem for modern web apps?
+// Answer: 'Blocking' means that when an alert, confirm, or prompt dialog is displayed, it halts the execution of the JavaScript code and prevents the user from interacting with the rest of the web page until the dialog is dismissed. This can be problematic for modern web apps because it disrupts the user experience, making the application feel unresponsive and preventing users from performing other actions while waiting for the dialog to be addressed.
+// 2 In a real modern web app, what would developers use instead of alert/confirm/prompt?
+// Answer: In modern web apps, developers typically use custom modal dialogs or notification components built with HTML, CSS, and JavaScript frameworks (like React, Vue, or Angular) instead of the native alert/confirm/prompt functions. These custom components allow for better styling, more control over the user experience, and non-blocking behavior, enabling users to interact with the app while the dialog is open.
+// 3 window.prompt() returns what when the user clicks Cancel? What when they leave the field
+// blank and click OK?
+// Answer: When the user clicks Cancel in a window.prompt() dialog, it returns null. When the user leaves the input field blank and clicks OK, it returns an empty string ("").
