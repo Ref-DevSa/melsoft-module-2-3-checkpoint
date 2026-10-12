@@ -1041,7 +1041,28 @@ var finalTotal = total - seniorDiscount;
 console.log("Total: R" + finalTotal.toFixed(2));
 // 16. Bug: The finalTotal calculation does not account for the case where seniorDiscount is null, which can cause NaN results. It should default to 0 if seniorDiscount is null.
 // === END OF SCRIPT ===
-// Find at least 12 numbered bugs. For each, quote the exact line and explain in one sentence
-// WHY it is a bug. Then write a corrected version of the entire script. The corrected version must
-// actually run and produce a sensible total.
 
+// Challenge 12 — Self-Reflection
+
+// 1. What is the ONE most important thing you understood about JavaScript's type system from
+// this project? Give an example where it bit you.
+// 
+// 2. Explain in your own words why using === is almost always safer than ==. Give one concrete
+// case where == would silently cause a bug.
+// Answer: Using === is safer than == because it checks for both value and type equality, preventing unexpected errors that can lead to bugs. 
+//         For example, if you compare 0 == "0", it would return true due to type coercion, but 0 === "0" would return false, which is the expected 
+//         behavior when checking for equality between different types.
+// 3. When would you prefer the nullish coalescing operator (??) over the logical OR operator (||)?
+// Give a specific example where swapping one for the other changes the outcome.
+// 4 typeof null returns 'object'. Explain WHY (the historical reason), and describe how you
+// would check if a variable is specifically null without being tricked.
+// 5 Describe a realistic scenario in production code where forgetting to cast a value would
+// cause a bug a developer might not notice for a long time.
+// 6 In your banking calculator for Challenge 9, you had to handle floating-point arithmetic for
+// money. Explain in your own words why 0.1 + 0.2 does NOT equal 0.3 in JavaScript, and the
+// production-grade solution (hint: how real banks store money).
+// 7 Explain the difference between the single-character operators (& and |) and the
+// double-character operators (&& and ||). Give one case where confusing them would cause a
+// silent production bug.
+// 8 What was the single hardest Module 2 or Module 3 concept for you to grasp, and what
+// finally made it click? Be honest — this is for me to know how to teach the next cohort better.
