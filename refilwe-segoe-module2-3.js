@@ -984,19 +984,6 @@ console.log(0.1 + 0.2); // 0.30000000000000004
 
 // Answer: To handle floating-point precision issues, I used the toFixed method to format the output to two decimal places, ensuring that the displayed values are accurate for financial purposes. A real bank would typically store monetary amounts as integers representing the smallest currency unit (e.g., cents) or use a fixed-point decimal representation to avoid floating-point inaccuracies. For example, instead of storing R 15,750.33 as a float, it would be stored as 1,575,033 cents (an integer). This approach prevents issues like 0.1 + 0.2 resulting in 0.30000000000000004, which can lead to significant errors in financial calculations.
 
-
-// Challenge 10 — User Interaction HTML Flow
-
-// Interview answers (in a <script> comment block at the end):
-// 1 What does 'blocking' mean when we say alert/confirm/prompt are blocking? Why is that a
-// problem for modern web apps?
-// Answer: 'Blocking' means that when an alert, confirm, or prompt dialog is displayed, it halts the execution of the JavaScript code and prevents the user from interacting with the rest of the web page until the dialog is dismissed. This can be problematic for modern web apps because it disrupts the user experience, making the application feel unresponsive and preventing users from performing other actions while waiting for the dialog to be addressed.
-// 2 In a real modern web app, what would developers use instead of alert/confirm/prompt?
-// Answer: In modern web apps, developers typically use custom modal dialogs or notification components built with HTML, CSS, and JavaScript frameworks (like React, Vue, or Angular) instead of the native alert/confirm/prompt functions. These custom components allow for better styling, more control over the user experience, and non-blocking behavior, enabling users to interact with the app while the dialog is open.
-// 3 window.prompt() returns what when the user clicks Cancel? What when they leave the field
-// blank and click OK?
-// Answer: When the user clicks Cancel in a window.prompt() dialog, it returns null. When the user leaves the input field blank and clicks OK, it returns an empty string ("").
-
 // Challenge 11 — Bug Hunt
 
 // Below is a shopping-cart script written by a junior developer. It runs without crashing, but it
