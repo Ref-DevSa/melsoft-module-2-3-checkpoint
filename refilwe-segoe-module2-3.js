@@ -994,29 +994,29 @@ console.log(0.1 + 0.2); // 0.30000000000000004
 var item1Price = "199.99";
 // 1. Bug: item1Price is a string, which will cause concatenation instead of addition when calculating subtotal.
 var item2Price = "49.50";
-// 2. Bug: item2Price is a string, which will cause concatenation instead of addition when calculating subtotal.
+// 2. Bug: item2Price is a string, same bug as item1Price
 var item3Price = 125;
-// 3. Bug: item3Price is a number, but it should be converted to a number if it's a string.
+// 3. none
 var quantity = "2";
 // 4. Bug: quantity is a string, which will cause concatenation instead of multiplication when calculating subtotal.
 var discountCode = "SAVE10";
 // 5. Bug: discountCode is a string, which is fine, but it should be compared using strict equality (===) for better type safety.
 var isLoggedIn = "true";
-// 6. Bug: isLoggedIn is a string, which will always evaluate to true in a boolean context, but it should be a boolean value (true/false).
+// 6. Bug: isLoggedIn is a string, however it should be a boolean value (true/false).
 var customerAge = null;
 // 7. Bug: customerAge is null, which will cause issues when comparing with numbers. It should be a number.
 customerAge = Number(customerAge); // Convert to number
 var subtotal = Number(item1Price) + Number(item2Price) + (Number(item3Price) * Number(quantity));
-// 8. Bug: The subtotal calculation does not account for operator precedence. It should use parentheses to ensure correct order of operations.
-console.log("Subtotal:", subtotal);
+// 8. Bug: The subtotal calculation does not account for operator precedence. 
+// It should use parentheses to ensure correct order of operations.
 var discount = discountCode == "SAVE10" ? 0.1 : 0;
-// 9. Bug: The discount calculation uses loose equality (==) instead of strict equality (===) for better type safety.
+// 
 var discountAmount = subtotal * discount;
 // 10. Bug: The discountAmount calculation is correct, but it should be rounded to two decimal places for currency formatting.
 var afterDiscount = subtotal - discountAmount;
-// 11. Bug: The afterDiscount calculation is correct, but it should also be rounded to two decimal places for currency formatting.
+// none
 var vat = afterDiscount * 0.15;
-// 12. Bug: The vat calculation is correct, but it should also be rounded to two decimal places for currency formatting.
+// none
 var total = afterDiscount + vat;
 // 13. Bug: The total calculation is correct, but it should also be rounded to two decimal places for currency formatting.
 var canCheckout = isLoggedIn && customerAge > 18;
