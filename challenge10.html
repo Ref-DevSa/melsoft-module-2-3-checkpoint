@@ -32,6 +32,17 @@
 
         // Display a summary
         window.alert(`Summary:\nName: ${name}\nAge: ${age}\nTier: ${tier}\nSubscribed: ${subscribe ? "Yes" : "No"}`);
+
+        /*Interview answers (in a <script> comment block at the end):
+1 What does 'blocking' mean when we say alert/confirm/prompt are blocking? Why is that a
+problem for modern web apps?
+Answer: 'Blocking' means that when an alert, confirm, or prompt dialog is displayed, it halts the execution of the JavaScript code and prevents the user from interacting with the rest of the web page until the dialog is dismissed. This can be problematic for modern web apps because it disrupts the user experience, making the application feel unresponsive and preventing users from performing other actions while waiting for the dialog to be addressed.
+2 In a real modern web app, what would developers use instead of alert/confirm/prompt?
+Answer: In modern web apps, developers typically use custom modal dialogs or notification components built with HTML, CSS, and JavaScript frameworks (like React, Vue, or Angular) instead of the native alert/confirm/prompt functions. These custom components allow for better styling, more control over the user experience, and non-blocking behavior, enabling users to interact with the app while the dialog is open.
+3 window.prompt() returns what when the user clicks Cancel? What when they leave the field
+blank and click OK?
+Answer: When the user clicks Cancel in a window.prompt() dialog, it returns null. When the user leaves the input field blank and clicks OK, it returns an empty string ("").
+*/
     </script>
 </body>
 </html>
