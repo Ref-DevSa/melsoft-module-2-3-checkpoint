@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge 10</title>
+</head>
+<body>
+    <script>
+        // Greet the user
+        window.alert("Welcome to Melsoft Academy website!");
+
+        // What is the user's name
+        let name = window.prompt("What is your name?");
+        name = name ? name.trim() : "Guest"; // Default to 'Guest' if null or blank
+
+        // How old is the user.
+        let ageInput = window.prompt("What is your age?");
+        let age = Number(ageInput);
+
+        // Validate the age
+        if (isNaN(age) || age < 1 || age > 120) {
+            window.alert("Invalid age. Please enter a number between 1 and 120.");
+            throw new Error("Invalid age input");
+        }
+
+        // Determine the age limit tier
+        let tier = (age < 18) ? "Youth" : (age < 60) ? "Adult" : "Senior";
+
+        // Ask if the user wants to subscribe to the newsletter
+        let subscribe = window.confirm("Do you want to subscribe to our newsletter?");
+
+        // Display a summary
+        window.alert(`Summary:\nName: ${name}\nAge: ${age}\nTier: ${tier}\nSubscribed: ${subscribe ? "Yes" : "No"}`);
+    </script>
+</body>
+</html>
